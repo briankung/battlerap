@@ -7,7 +7,7 @@ Battlerap::Application.routes.draw do
     resources :battles, only: [:index]
   end
   
-  resources :battles, only: [:create, :index] do
+  resources :battles, only: [:create, :index, :show] do
     resources :verses, only: [:create, :index]
   end
 end
