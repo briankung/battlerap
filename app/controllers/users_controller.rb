@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => [:create]
   respond_to :json
 
   def index
@@ -7,8 +8,12 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user][:handle])
-    @user.save
+    @user = User.create(params[:user])
     respond_with(@user)
   end
+  
+  def show
+    respond_with @user
+  end
+  
 end
