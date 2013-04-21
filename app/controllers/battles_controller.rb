@@ -11,11 +11,7 @@ class BattlesController < ApplicationController
   end  
   
   def create
-    @friend = User.where(handle: params[:battle][:friend_handle]).first || User.create(handle: params[:battle][:friend_handle])
-    @battle = Battle.new
-    @battle.category = params[:battle][:category]
-    @battle.user_id = params[:battle][:user_id]
-    @battle.friend_id = @friend.id
+    @battle = Battle.new(params[:battle])
     if @battle.save
       respond_with(@battle)
     end
