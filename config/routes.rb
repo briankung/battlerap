@@ -6,4 +6,7 @@ Battlerap::Application.routes.draw do
   resources :battles, only: [:create, :index, :show] do
     resources :verses, only: [:create, :index]
   end
+  
+  resources :verses, only: [:index]
+  
 end
