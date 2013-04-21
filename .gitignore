@@ -8,4 +8,4 @@
 /log/*.log
 /tmp
 .DS_Store
-/config/env.rb
+/config/heroku_env.rb
