@@ -2,7 +2,11 @@ class BattlesController < ApplicationController
   respond_to :json
 
   def index
-    @battles = Battle.all
+    if params[:user_id]
+      @battles = Battle.where("user_id = ? OR friend_id = ?", params[:user_id], params[:user_id])
+    else
+      @battles = Battle.all
+    end
     respond_with(@battles)
   end  
   
