@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.create(params[:user])
+    @user = User.where(handle: params[:user][:handle]).first || User.create(params[:user])
     respond_with(@user)
   end
   
